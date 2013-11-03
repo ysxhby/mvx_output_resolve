@@ -63,7 +63,7 @@ struct entry_info
 struct output_entry
 {
   struct entry_info  m_entry_info;
-  int odd_parity;  //m_entry_info中1的个数为偶数则odd_parity=0,m_entry_info中1的个数为奇数则odd_parity=1
+  int even_parity;  //m_entry_info中1的个数为偶数则odd_parity=0,m_entry_info中1的个数为奇数则odd_parity=1
 };
 
 
