@@ -48,7 +48,7 @@ MODULE_PARM_DESC(timeout, "Interval between send packets, default 1(unit second)
 
 static struct task_struct *kthreadtask = NULL;
 
-#define DATA_PAGE_SIZE 4000*36
+#define DATA_PAGE_SIZE 4000*40
 #define OUT_BUF_SIZE 4000*40
 
 void *buf[2];
@@ -110,7 +110,7 @@ struct threadinfo{
 };
 
 /**
-  * ·µ»ØÑ¹Ëõ°ü´óÐ¡£¬Êý¾ÝÎ»ÓÚÈ«¾Ö±äÁ¿out_bufÖÐ
+  * ï¿½ï¿½ï¿½ï¿½Ñ¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½È«ï¿½Ö±ï¿½ï¿½ï¿½out_bufï¿½ï¿½
   */
 int compress2send(int bufOrder, int dataSize)
 {
@@ -159,7 +159,7 @@ static int sendthread(void *data)//build a thread to send message
 		PrintStr(0, 13, 7, 1, FALSE, str, TRUE);
 		if (*id0)
 		{
-			//Ñ¹Ëõ¡¢UDP·¢ËÍ
+			//Ñ¹ï¿½ï¿½ï¿½ï¿½UDPï¿½ï¿½ï¿½ï¿½
 			len = compress2send(0, DATA_PAGE_SIZE);
 			ret = kernel_send(tinfo->sock, &msg, len);
 			if (ret == -1){
@@ -179,7 +179,7 @@ static int sendthread(void *data)//build a thread to send message
 			*id1 = 0;
                       //  printk("%d\n",ret);
 		}
-		//ÑÓÊ±
+		//ï¿½ï¿½Ê±
 		schedule_timeout_interruptible(1);
          //   break;
 	}
@@ -194,7 +194,7 @@ out:
 
 int udp_send_init(bool *flag1,bool *flag2,unsigned int buf1,unsigned int buf2)
 {
-	//±êÖ¾Î»
+	//ï¿½ï¿½Ö¾Î»
         id0 = flag1;
         id1 = flag2;
 	buf[0] = buf1;
